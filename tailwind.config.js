@@ -1,0 +1,2 @@
+const themeFont="Space Mono",{fontFamily:fontFamily}=require("tailwindcss/defaultTheme");
+module.exports={content:["./src/pages/**/*.tsx","./src/components/**/*.tsx"],theme:{fontFamily:{sans:[themeFont,...fontFamily.sans],serif:[themeFont,...fontFamily.serif],mono:[themeFont,...fontFamily.mono]},container:{center: true, padding: '1rem'},extend:{}},plugins:[],darkMode: "class"};
