@@ -2,7 +2,7 @@ import Link from "next/link";
 import cx from "classnames";
 import css from "./navbar.module.sass";
 import { NavbarRoutes } from "../misc/routes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import { useRouter } from "next/router";
 
@@ -16,13 +16,25 @@ const Navbar = () => {
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  useEffect(() => {
+    const elem = document.body;
+    navbarOpen
+      ? elem?.classList.add("overflow-hidden", "md:overflow-auto")
+      : elem?.classList.remove("overflow-hidden", "md:overflow-auto");
+  }, [navbarOpen]);
+
+  useEffect(() => {
+    setNavbarOpen(false);
+  }, [asPath]);
+
   return (
     <nav
       className={cx(
-        "flex items-center w-full md:h-[80px] bg-white shadow-sm fixed overflow-hidden",
+        "flex items-center select-none w-full md:h-[80px] bg-white shadow-sm fixed overflow-hidden",
         css.navbar,
         navbarOpen ? "h-full" : "h-[80px]"
       )}
+      data-expanded={navbarOpen}
     >
       <div className="container h-full md:h-[unset] flex flex-col md:flex-row md:items-center justify-between">
         <div className="flex items-center justify-between min-h-[80px] md:min-h-[unset] md:h-[unset]">
@@ -62,16 +74,20 @@ const Navbar = () => {
           </button>
         </div>
         <div
-          className="flex items-center md:grow overflow-hidden transition-[height]"
+          className={cx(
+            "flex items-center md:grow overflow-hidden",
+            css.navMenu,
+            navbarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
+          )}
           id="main-navbar"
         >
           <AnimateSharedLayout>
-            <ul className="md:ml-auto flex flex-col md:flex-row">
+            <ul className="md:ml-auto overflow-hidden flex flex-col md:flex-row">
               {NavbarRoutes.map((route, index) => {
                 const isCurrentRoute = currentRouteIndex === index;
                 const shouldShowIndicator = indicatorIndex === index;
                 return (
-                  <li key={index} className="mb-3 md:mb-0">
+                  <li key={index} className="mb-3 md:mb-0 overflow-hidden">
                     <Link href={route.uri}>
                       <a
                         onMouseEnter={() => setIndicatorIndex(index)}
@@ -99,11 +115,12 @@ const Navbar = () => {
         </div>
         <div
           className={cx(
-            "py-6 md:hidden h-[80px] overflow-hidden transition-[padding,height]",
-            !navbarOpen && "h-0 py-0"
+            "py-6 md:hidden h-[80px] overflow-hidden",
+            css.contactMail,
+            navbarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
           )}
         >
-          contact@heinthantis.me
+          <a href="mailto:contact@heinthantis.me">contact@heinthantis.me</a>
         </div>
       </div>
     </nav>

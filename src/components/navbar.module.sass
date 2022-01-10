@@ -11,7 +11,25 @@
     transition-delay: .25s
 
 .navbar
-    transition: height 150ms, background-color 0.5s
+    transition: height 200ms
+    transition-delay: 800ms
+
+    .navMenu
+        transition: opacity 0.2s
+        transition-delay: 400ms
+
+    .contactMail
+        transition: opacity 0.2s
+        transition-delay: 0ms
+
+    &[data-expanded="true"]
+        transition-delay: 0ms
+
+        .navMenu
+            transition-delay: 400ms
+
+        .contactMail
+            transition-delay: 800ms
 
 .logo
     position: relative
@@ -26,7 +44,7 @@
 
         .logoExtra
             opacity: 0
-            transition: opacity 0.3s
+            transition: opacity 0.2s
 
         &::after
             @include indicatorStick()
