@@ -74,11 +74,7 @@ const Navbar = () => {
           </button>
         </div>
         <div
-          className={cx(
-            "flex items-center md:grow overflow-hidden",
-            css.navMenu,
-            navbarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-          )}
+          className={cx("flex items-center md:grow overflow-hidden", css.navMenu)}
           id="main-navbar"
         >
           <AnimateSharedLayout>
@@ -87,7 +83,7 @@ const Navbar = () => {
                 const isCurrentRoute = currentRouteIndex === index;
                 const shouldShowIndicator = indicatorIndex === index;
                 return (
-                  <li key={index} className="mb-3 md:mb-0 overflow-hidden">
+                  <li key={index} className="mb-3 md:mb-0">
                     <Link href={route.uri}>
                       <a
                         onMouseEnter={() => setIndicatorIndex(index)}
