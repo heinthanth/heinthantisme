@@ -1,0 +1,52 @@
+@mixin indicatorStick()
+    content: ""
+    position: absolute
+    left: 0px
+    bottom: 0px
+    height: 2px
+    width: 0%
+    border-color: #000
+    background-color: #000
+    transition: width .3s ease-in-out
+    transition-delay: .25s
+
+.navbar
+    transition: height 150ms, background-color 0.5s
+
+.logo
+    position: relative
+
+    @screen md
+        &:hover
+            .logoExtra
+                opacity: 1
+
+            &::after
+                width: 100%
+
+        .logoExtra
+            opacity: 0
+            transition: opacity 0.3s
+
+        &::after
+            @include indicatorStick()
+
+.navLink
+    position: relative
+
+    span:not(.routeIndicator)
+        transition: color .3s ease-in-out
+
+        @screen md
+            @apply text-sm
+
+.routeIndicator
+    @include indicatorStick()
+    width: 100%
+    bottom: .5rem
+    left: 0rem
+    width: calc( 100% - .75rem )
+
+    @screen md
+        left: .75rem
+        width: calc( 100% - 1.5rem )

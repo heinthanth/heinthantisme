@@ -1,1 +1,1 @@
-module.exports={reactStrictMode:!0,pageExtensions:["tsx"]};
+module.exports={reactStrictMode:!0,pageExtensions:["p.tsx"]};
