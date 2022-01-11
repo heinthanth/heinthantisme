@@ -1,1 +1,1 @@
-module.exports={reactStrictMode:!0,pageExtensions:["tsx"],poweredByHeader:!1,swcMinify:!0,experimental:{esmExternals:!1}};
+const{BundleAnalyzerPlugin:BundleAnalyzerPlugin}=require("webpack-bundle-analyzer");module.exports={reactStrictMode:!0,pageExtensions:["tsx"],poweredByHeader:!1,swcMinify:!0,experimental:{esmExternals:!1},webpack:(e,{isServer:n})=>(process.env.ANALYZE&&e.plugins.push(new BundleAnalyzerPlugin({analyzerMode:"server",analyzerPort:n?3081:3082,openAnalyzer:!0})),e)};
