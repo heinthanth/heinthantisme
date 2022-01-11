@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const NoScriptWrapper = ({ shouldWrap, children }: { shouldWrap: boolean; children: ReactNode }) =>
   shouldWrap ? <noscript>{children}</noscript> : <>{children}</>;
