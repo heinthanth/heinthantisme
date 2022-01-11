@@ -29,10 +29,14 @@
     opacity: 0
     transition: opacity 400ms
     transition-delay: 2200ms
+    pointer-events: none
 
 .navbar[data-expanded="true"] + .over
     transition-delay: 0ms
     opacity: 1
+
+    @screen md
+        opacity: 0
 
 .logo
     position: relative
