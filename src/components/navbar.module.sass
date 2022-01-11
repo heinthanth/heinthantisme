@@ -10,6 +10,19 @@
     transition: width .3s ease-in-out
     transition-delay: .25s
 
+.over
+    opacity: 0
+    transition: opacity 400ms
+    transition-delay: 2200ms
+    pointer-events: none
+
+.navbar[data-expanded="true"] + .over
+    transition-delay: 0ms
+    opacity: 1
+
+    @screen md
+        opacity: 0
+
 .navbar
     transition: height 200ms
     transition-delay: 1800ms
@@ -24,19 +37,6 @@
 
 .navbar[data-expanded="true"] .contactMail
     transition-delay: 1800ms
-
-.over
-    opacity: 0
-    transition: opacity 400ms
-    transition-delay: 2200ms
-    pointer-events: none
-
-.navbar[data-expanded="true"] + .over
-    transition-delay: 0ms
-    opacity: 1
-
-    @screen md
-        opacity: 0
 
 .logo
     position: relative
