@@ -14,14 +14,14 @@ const NoScriptPageComp = ({ isNoScript = true }: { isNoScript?: boolean }) => (
         </p>
         <p className="text-neutral-900 mb-8 lg:w-3/4">
           So, please enable Javascript. In case, u want to use <b>without JavaScript</b>, please go
-          to non-JS version o&apos; this site at &nbsp;
+          to non-JS version o&apos; this site at&nbsp;
           <a
             className="text-neutral-800 underline underline-offset-1 decoration-2 decoration-solid"
             href="#"
           >
             this link
           </a>
-          .&nbsp; SORRY, NOT SORRY FOR INCONVENIENT 🤪.
+          .&nbsp;SORRY, NOT SORRY FOR INCONVENIENT 🤪.
         </p>
       </div>
     </div>

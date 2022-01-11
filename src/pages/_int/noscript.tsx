@@ -1,4 +1,4 @@
-import NoScriptPageComp from "../noscript";
+import NoScriptPageComp from "../../components/noscript";
 
 const NoScript = () => <NoScriptPageComp isNoScript={false} />;
 

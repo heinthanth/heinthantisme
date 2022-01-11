@@ -1,1 +1,1 @@
-module.exports={reactStrictMode:!0,pageExtensions:["p.tsx"],poweredByHeader:!1,swcMinify:!0,experimental:{esmExternals:!1}};
+module.exports={reactStrictMode:!0,pageExtensions:["tsx"],poweredByHeader:!1,swcMinify:!0,experimental:{esmExternals:!1}};
