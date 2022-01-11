@@ -5,12 +5,21 @@
 html, body
     height: 1px
     min-width: 300px
-    min-height: 100%
+    min-height: 100vh
 
-#__next, #hh-space, #hh-app
-    height: 100%
+#__next, #hh-space
+    height: 100vh
+
+#hh-main
+    min-height: 100%
+    height: auto !important
 
 @layer base
     html
         -webkit-tap-highlight-color: transparent
         scroll-behavior: smooth
+
+.hh-section
+    min-height: 600px
+    height: 100vh
+    max-height: 800px

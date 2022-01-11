@@ -24,8 +24,8 @@ const HeinHeinSpace = ({
       <meta key="color-scheme" name="color-scheme" content={theme} />
       <meta key="theme-color" name="theme-color" content="#FFFFFF" />
     </Head>
-    <div id="hh-app">
-      <Navbar />
+    <Navbar />
+    <div id="hh-main">
       <Component {...pageProps} />
     </div>
   </div>

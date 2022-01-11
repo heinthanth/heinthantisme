@@ -1,15 +1,16 @@
 import { Fragment } from "react";
+import { Fade } from "react-awesome-reveal";
 import Head from "../components/head";
 
 const HomePage = () => (
   <Fragment>
     <Head title="HOME" />
-    <div className="container flex items-center h-full">
+    <Fade delay={400} className="container hh-section flex items-center h-full">
       <h1 className="text-5xl font-bold">Hello World!</h1>
-    </div>
-    <div className="container flex items-center h-full">
+    </Fade>
+    <Fade delay={400} className="container hh-section flex items-center h-full">
       <h1 className="text-5xl font-bold">You Scrolled!</h1>
-    </div>
+    </Fade>
   </Fragment>
 );
 
