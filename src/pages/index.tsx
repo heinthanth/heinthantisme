@@ -10,7 +10,7 @@ const IndexPage = () => (
       <div>
         <h1 className="text-5xl font-bold mb-2">Hello World!</h1>
         <p>
-          This site is devel version of{" "}
+          This site is development version of&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
