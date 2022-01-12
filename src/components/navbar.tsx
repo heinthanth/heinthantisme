@@ -3,7 +3,7 @@ import cx from "classnames";
 import css from "./navbar.module.sass";
 import { NavbarRoutes } from "../misc/routes";
 import { Fragment, useEffect, useState } from "react";
-import { AnimateSharedLayout, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
     <Fragment>
       <nav
         className={cx(
-          "flex items-center z-10 select-none w-full md:h-[80px] bg-white fixed overflow-hidden",
+          "flex items-center z-20 select-none w-full md:h-[80px] bg-white fixed overflow-hidden",
           css.navbar,
           navbarOpen ? "h-full" : "h-[80px]"
         )}
@@ -78,37 +78,35 @@ const Navbar = () => {
             className={cx("flex items-center md:grow overflow-hidden", css.navMenu)}
             id="main-navbar"
           >
-            <AnimateSharedLayout>
-              <ul className="md:ml-auto overflow-hidden flex flex-col md:flex-row">
-                {NavbarRoutes.map((route, index) => {
-                  const isCurrentRoute = currentRouteIndex === index;
-                  const shouldShowIndicator = indicatorIndex === index;
-                  return (
-                    <li key={index} className="mb-3 md:mb-0">
-                      <Link href={route.uri}>
-                        <a
-                          onMouseEnter={() => setIndicatorIndex(index)}
-                          onMouseLeave={() => setIndicatorIndex(currentRouteIndex)}
-                          className={cx("p-2 pr-3 pl-0 md:pl-3", css.navLink)}
-                          aria-label={route.ariaLabel}
-                          aria-current={isCurrentRoute ? "page" : "false"}
-                        >
-                          <span className={shouldShowIndicator ? "text-black" : "text-neutral-600"}>
-                            {route.label}
-                          </span>
-                          {shouldShowIndicator && (
-                            <motion.span
-                              layoutId="navLinkIndicator"
-                              className={css.routeIndicator}
-                            ></motion.span>
-                          )}
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </AnimateSharedLayout>
+            <ul className="md:ml-auto overflow-hidden flex flex-col md:flex-row">
+              {NavbarRoutes.map((route, index) => {
+                const isCurrentRoute = currentRouteIndex === index;
+                const shouldShowIndicator = indicatorIndex === index;
+                return (
+                  <li key={index} className="mb-3 md:mb-0">
+                    <Link href={route.uri}>
+                      <a
+                        onMouseEnter={() => setIndicatorIndex(index)}
+                        onMouseLeave={() => setIndicatorIndex(currentRouteIndex)}
+                        className={cx("p-2 pr-3 pl-0 md:pl-3", css.navLink)}
+                        aria-label={route.ariaLabel}
+                        aria-current={isCurrentRoute ? "page" : "false"}
+                      >
+                        <span className={shouldShowIndicator ? "text-black" : "text-neutral-600"}>
+                          {route.label}
+                        </span>
+                        {shouldShowIndicator && (
+                          <motion.span
+                            layoutId="navLinkIndicator"
+                            className={css.routeIndicator}
+                          ></motion.span>
+                        )}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           <div
             className={cx(
@@ -121,7 +119,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className={cx("bg-white fixed w-full h-full", css.over)}></div>
+      <div className={cx("bg-white fixed w-full h-full z-10", css.over)}></div>
     </Fragment>
   );
 };

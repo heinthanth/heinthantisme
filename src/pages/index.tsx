@@ -8,8 +8,8 @@ const IndexPage = () => (
     <Head title="HOME" />
     <Fade delay={400} className="container hh-section flex items-center h-full">
       <div>
-        <h1 className="text-5xl font-bold mb-2">Hello World!</h1>
-        <p>
+        <h1 className="text-5xl font-bold mb-8">Hello World!</h1>
+        <p className="text-neutral-900 mb-2">
           This site is development version of&nbsp;
           <a
             target="_blank"
@@ -19,11 +19,18 @@ const IndexPage = () => (
           >
             https://heinthanth.com
           </a>
-          , but&nbsp;
+        </p>
+        <p className="text-neutral-900 mb-2">
+          But see&nbsp;
           <Link href="/home">
-            <a className="underline underline-offset-1 decoration-2 decoration-solid">click here</a>
+            <a
+              className="underline underline-offset-1 decoration-2 decoration-solid"
+              aria-label="click here to view current development verison of https://heinthanth.com"
+            >
+              current development version
+            </a>
           </Link>
-          &nbsp;to continue.
+          &nbsp;here.
         </p>
       </div>
     </Fade>
