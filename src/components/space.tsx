@@ -1,9 +1,12 @@
 import type { NextComponentType, NextPageContext } from "next";
 import { connect } from "react-redux";
+import Head from "next/head";
 import type { AppState } from "../redux/states";
 import type { ThemeState } from "../redux/states/theme";
-import Head from "./head";
 import Navbar from "./navbar";
+// import SettingButton from "./settingbtn";
+import { DefaultSeo as SEO } from "next-seo";
+import { siteName, siteURL, description, coverLocation, creator } from "../misc/constants";
 
 const HeinHeinSpace = ({
   Component,
@@ -23,7 +26,16 @@ const HeinHeinSpace = ({
       <link rel="manifest" href="/space.webmanifest" />
       <meta key="color-scheme" name="color-scheme" content={theme} />
       <meta key="theme-color" name="theme-color" content="#FFFFFF" />
+      <meta name="creator" content={creator} />
     </Head>
+    <SEO
+      defaultTitle={siteName}
+      titleTemplate={`%s - ${siteName}`}
+      description={description}
+      canonical={siteURL}
+      twitter={{ cardType: "summary_large_image", handle: "@heinthanth" }}
+      openGraph={{ type: "website", site_name: siteName, images: [coverLocation] }}
+    />
     <Navbar />
     <div id="hh-main">
       <Component {...pageProps} />

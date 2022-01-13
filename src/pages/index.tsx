@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
-import Head from "../components/head";
+import { NextSeo } from "next-seo";
 
 const IndexPage = () => (
   <Fragment>
-    <Head title="HOME" />
+    <NextSeo title="Home" />
     <Fade delay={400} className="container hh-section flex items-center h-full">
       <div>
         <h1 className="text-5xl font-bold mb-8">Hello World!</h1>

@@ -1,18 +1,20 @@
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
-import Head from "../components/head";
+import { NextSeo } from "next-seo";
 
 const HomePage = () => (
   <Fragment>
-    <Head title="HOME" />
-    <Fade delay={400} className="container hh-section flex items-center h-full">
-      <div>
+    <NextSeo title="Home" />
+    <div className="container hh-section flex items-center h-full">
+      <Fade delay={400}>
         <h1 className="text-5xl font-bold mb-2">Hi, welcome to Home!</h1>
-      </div>
-    </Fade>
-    <Fade delay={400} className="container hh-section flex items-center h-full">
-      <h1 className="text-5xl font-bold mb-2">You Scrolled!</h1>
-    </Fade>
+      </Fade>
+    </div>
+    <div className="container hh-section flex items-center h-full">
+      <Fade delay={400}>
+        <h1 className="text-5xl font-bold mb-2">You Scrolled!</h1>
+      </Fade>
+    </div>
   </Fragment>
 );
 
