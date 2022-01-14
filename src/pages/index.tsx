@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
 import { NextSeo } from "next-seo";
+import cx from "classnames";
+import common from "../components/common.module.sass";
 
 const IndexPage = () => (
   <Fragment>
     <NextSeo title="Home" />
-    <Fade delay={400} className="container hh-section flex items-center h-full">
+    <Fade delay={400} className={cx("container flex items-center h-full", common.section)}>
       <div>
         <h1 className="text-5xl font-bold mb-8">Hello World!</h1>
         <p className="text-neutral-900 mb-2">

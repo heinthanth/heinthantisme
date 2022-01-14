@@ -37,9 +37,9 @@ const HeinHeinSpace = ({
       openGraph={{ type: "website", site_name: siteName, images: [coverLocation] }}
     />
     <Navbar />
-    <div id="hh-main">
+    <main id="hh-main">
       <Component {...pageProps} />
-    </div>
+    </main>
   </div>
 );
 

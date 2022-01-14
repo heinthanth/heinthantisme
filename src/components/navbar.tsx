@@ -7,11 +7,10 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const { asPath } = useRouter();
-  const p = asPath.split(/[?#]/)[0];
+  const { pathname, ...restRouter } = useRouter();
   // prettier-ignore
   const initIndex = NavbarRoutes.findIndex(({ uri }) =>
-    uri === "/" ? p === uri : p.includes(uri));
+    uri === "/" ? pathname === uri : pathname.includes(uri));
   const currentRouteIndex = initIndex === -1 ? 0 : initIndex;
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -25,16 +24,19 @@ const Navbar = () => {
 
   useEffect(() => {
     setNavbarOpen(false);
-  }, [asPath]);
+  }, [pathname]);
 
+  useEffect(() => {
+    const resizeListener = () => setNavbarOpen(window.innerWidth >= 768);
+    resizeListener(); // initial state
+    window.addEventListener("resize", resizeListener);
+    return () => window.removeEventListener("resize", resizeListener);
+  }, []);
+  
   return (
     <Fragment>
       <nav
-        className={cx(
-          "flex items-center z-20 select-none w-full md:h-[80px] bg-white fixed overflow-hidden",
-          css.navbar,
-          navbarOpen ? "h-full" : "h-[80px]"
-        )}
+        className={cx("flex items-center select-none bg-white fixed overflow-hidden", css.navbar)}
         data-expanded={navbarOpen}
       >
         <div className="container h-full md:h-[unset] flex flex-col md:flex-row md:items-center justify-between">
@@ -47,30 +49,15 @@ const Navbar = () => {
             </Link>
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className="flex w-[24px] h-[32px] items-center space-x-2 focus:outline-none md:hidden"
+              className={css.toggleButton}
               aria-label="Toggle Navigation bar"
               aria-controls="main-navbar"
               aria-expanded={navbarOpen}
             >
               <div className="w-6 flex items-center justify-center relative">
-                <span
-                  className={cx(
-                    "transform transition w-full h-[2px] bg-current absolute",
-                    navbarOpen ? "translate-y-0 rotate-45" : "-translate-y-2"
-                  )}
-                ></span>
-                <span
-                  className={cx(
-                    "transform transition w-full h-[2px] bg-current absolute",
-                    navbarOpen ? "opacity-0 translate-x-3" : "opacity-100"
-                  )}
-                ></span>
-                <span
-                  className={cx(
-                    "transform transition w-full h-[2px] bg-current absolute",
-                    navbarOpen ? "translate-y-0 -rotate-45" : "translate-y-2"
-                  )}
-                ></span>
+                <span className="transform transition w-full h-[2px] bg-current absolute" />
+                <span className="transform transition w-full h-[2px] bg-current absolute" />
+                <span className="transform transition w-full h-[2px] bg-current absolute" />
               </div>
             </button>
           </div>
@@ -95,7 +82,7 @@ const Navbar = () => {
                         <span className={shouldShowIndicator ? "text-black" : "text-neutral-600"}>
                           {route.label}
                         </span>
-                        {shouldShowIndicator && (
+                        {pathname !== "/404" && shouldShowIndicator && (
                           <motion.span
                             layoutId="navLinkIndicator"
                             className={css.routeIndicator}
@@ -108,13 +95,7 @@ const Navbar = () => {
               })}
             </ul>
           </div>
-          <div
-            className={cx(
-              "py-6 md:hidden h-[80px] overflow-hidden",
-              css.contactMail,
-              navbarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-            )}
-          >
+          <div className={cx("py-6 md:hidden h-[80px] overflow-hidden", css.contactMail)}>
             <a href="mailto:contact@heinthantis.me">contact@heinthantis.me</a>
           </div>
         </div>

@@ -1,15 +1,15 @@
-import { Fragment } from "react";
-import { Fade } from "react-awesome-reveal";
 import { NextSeo } from "next-seo";
+import { Fragment } from "react";
 import cx from "classnames";
 import common from "../components/common.module.sass";
+import { Fade } from "react-awesome-reveal";
 
-const HomePage = () => (
+const AboutPage = () => (
   <Fragment>
-    <NextSeo title="Home" />
+    <NextSeo title="Who Am I" />
     <div className={cx("container flex items-center h-full", common.section)}>
       <Fade delay={400}>
-        <h1 className="text-5xl font-bold mb-2">Hi, welcome to Home!</h1>
+        <h1 className="text-5xl font-bold mb-2">It&apos;s who I am!</h1>
       </Fade>
     </div>
     <div className={cx("container flex items-center h-full", common.section)}>
@@ -20,4 +20,4 @@ const HomePage = () => (
   </Fragment>
 );
 
-export default HomePage;
+export default AboutPage;

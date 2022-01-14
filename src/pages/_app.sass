@@ -24,18 +24,14 @@ html, body
     min-height: 100vh
 
 #__next, #hh-space
-    height: 100vh
+    min-height: 100%
+    height: auto
 
 #hh-main
     min-height: 100%
-    height: auto !important
+    height: auto
 
 @layer base
     html
         -webkit-tap-highlight-color: transparent
         scroll-behavior: smooth
-
-.hh-section
-    min-height: 600px
-    height: 100vh
-    max-height: 800px
