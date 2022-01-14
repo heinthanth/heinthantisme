@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <Fragment>
       <nav
-        className={cx("flex items-center select-none bg-white fixed overflow-hidden", css.navbar)}
+        className={cx("flex items-center select-none bg-white fixed overflow-hidden top-0 left-0", css.navbar)}
         data-expanded={navbarOpen}
       >
         <div className="container h-full md:h-[unset] flex flex-col md:flex-row md:items-center justify-between">
