@@ -7,40 +7,55 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const { pathname, ...restRouter } = useRouter();
+  const { pathname } = useRouter();
   // prettier-ignore
   const initIndex = NavbarRoutes.findIndex(({ uri }) =>
     uri === "/" ? pathname === uri : pathname.includes(uri));
   const currentRouteIndex = initIndex === -1 ? 0 : initIndex;
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [navbarExpanded, setNavbarExpanded] = useState(navbarOpen);
 
   useEffect(() => {
     const elem = document.body;
     navbarOpen
-      ? elem?.classList.add("overflow-hidden", "md:overflow-auto")
-      : elem?.classList.remove("overflow-hidden", "md:overflow-auto");
+      ? elem?.classList.add("overflow-hidden", "lg:overflow-auto")
+      : elem?.classList.remove("overflow-hidden", "lg:overflow-auto");
   }, [navbarOpen]);
 
-  useEffect(() => {
-    setNavbarOpen(false);
-  }, [pathname]);
+  useEffect(() => setNavbarOpen(false), [pathname]);
+  useEffect(() => setNavbarExpanded(navbarOpen), [navbarOpen]);
 
   useEffect(() => {
-    const resizeListener = () => setNavbarOpen(window.innerWidth >= 768);
-    resizeListener(); // initial state
+    const navbar = document.querySelector("#hh-navbar");
+    const scrollListener = () =>
+      window.scrollY <= 20
+        ? navbar?.classList.remove("bg-white", "shadow-sm")
+        : navbar?.classList.add("bg-white", "shadow-sm");
+    // prettier-ignore
+    const resizeListener = () => window.innerWidth >= 768
+        ? (setNavbarOpen(false), setNavbarExpanded(true)) : setNavbarExpanded(false);
+    // initial state
+    resizeListener();
+    scrollListener();
     window.addEventListener("resize", resizeListener);
-    return () => window.removeEventListener("resize", resizeListener);
+    window.addEventListener("scroll", scrollListener);
+
+    // prettier-ignore
+    return () => (
+      window.removeEventListener("resize", resizeListener),
+      window.removeEventListener("scroll", scrollListener));
   }, []);
-  
+
   return (
     <Fragment>
       <nav
-        className={cx("flex items-center select-none bg-white fixed overflow-hidden top-0 left-0", css.navbar)}
+        id="hh-navbar"
+        className={cx("flex items-center select-none overflow-hidden", css.navbar)}
         data-expanded={navbarOpen}
       >
-        <div className="container h-full md:h-[unset] flex flex-col md:flex-row md:items-center justify-between">
-          <div className="flex items-center justify-between min-h-[80px] md:min-h-[unset] md:h-[unset]">
+        <div className="container h-full lg:h-[unset] flex flex-col lg:flex-row lg:items-center justify-between">
+          <div className="flex items-center justify-between min-h-[80px] lg:min-h-[unset] lg:h-[unset]">
             <Link href="/">
               <a className={css.logo}>
                 <span>HIIIiN</span>
@@ -52,7 +67,8 @@ const Navbar = () => {
               className={css.toggleButton}
               aria-label="Toggle Navigation bar"
               aria-controls="main-navbar"
-              aria-expanded={navbarOpen}
+              aria-expanded={navbarExpanded}
+              data-expanded={navbarOpen}
             >
               <div className="w-6 flex items-center justify-center relative">
                 <span className="transform transition w-full h-[2px] bg-current absolute" />
@@ -62,20 +78,20 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            className={cx("flex items-center md:grow overflow-hidden", css.navMenu)}
+            className={cx("flex items-center lg:grow overflow-hidden", css.navMenu)}
             id="main-navbar"
           >
-            <ul className="md:ml-auto overflow-hidden flex flex-col md:flex-row">
+            <ul className="lg:ml-auto overflow-hidden flex flex-col lg:flex-row">
               {NavbarRoutes.map((route, index) => {
                 const isCurrentRoute = currentRouteIndex === index;
                 const shouldShowIndicator = indicatorIndex === index;
                 return (
-                  <li key={index} className="mb-3 md:mb-0">
+                  <li key={index} className="mb-3 lg:mb-0">
                     <Link href={route.uri}>
                       <a
                         onMouseEnter={() => setIndicatorIndex(index)}
                         onMouseLeave={() => setIndicatorIndex(currentRouteIndex)}
-                        className={cx("p-2 pr-3 pl-0 md:pl-3", css.navLink)}
+                        className={cx("p-2 pr-3 pl-0 lg:pl-3", css.navLink)}
                         aria-label={route.ariaLabel}
                         aria-current={isCurrentRoute ? "page" : "false"}
                       >
@@ -95,7 +111,7 @@ const Navbar = () => {
               })}
             </ul>
           </div>
-          <div className={cx("py-6 md:hidden h-[80px] overflow-hidden", css.contactMail)}>
+          <div className={cx("py-6 lg:hidden h-[80px] overflow-hidden", css.contactMail)}>
             <a href="mailto:contact@heinthantis.me">contact@heinthantis.me</a>
           </div>
         </div>

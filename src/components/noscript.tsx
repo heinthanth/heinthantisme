@@ -9,8 +9,8 @@ const NoScriptPageComp = ({ isNoScript = true }: { isNoScript?: boolean }) => (
     <NextSeo title="Oops, need JavaScript!" />
     <div className="fixed w-full h-full bg-white flex items-center z-50">
       <div className="container">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl mb-8">Well, I Need JavaScript!</h1>
-        <p className="text-neutral-900 mb-4 md:mb-2 lg:w-3/4">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl mb-8">Well, I Need JavaScript!</h1>
+        <p className="text-neutral-900 mb-4 lg:mb-2">
           I know u r aware o&apos; malicious JavaScript scripts. But this site won&apos;t work
           without JavaScript.
         </p>
