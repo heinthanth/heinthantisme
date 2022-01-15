@@ -15,7 +15,7 @@
     transition: opacity 400ms
     transition-delay: 2200ms
     pointer-events: none
-    background-image: url('../assets/images/home-hero.png')
+    background-image: url('../assets/images/home-page/hero.png')
     background-size: cover
     background-position: right
     background-repeat: no-repeat
@@ -28,9 +28,9 @@
         opacity: 0
 
 .navbar
-    transition: height, background-color
-    transition-duration: 200ms, 300ms
-    transition-delay: 1800ms, 0ms
+    transition: height
+    transition-duration: 200ms
+    transition-delay: 1800ms
     width: 100%
     height: 80px
     z-index: 20
@@ -39,7 +39,7 @@
     left: 0
 
     &[data-expanded="true"]
-        transition-delay: 400ms, 0ms
+        transition-delay: 400ms
         height: 100%
 
         @screen lg
