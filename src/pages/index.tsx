@@ -1,42 +1,33 @@
-import Link from "next/link";
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
 import { NextSeo } from "next-seo";
 import cx from "classnames";
-import common from "../components/common.module.sass";
+import commonCss from "../components/common.module.sass";
+import homeCss from "./home.module.sass";
+import uitOc from "../assets/images/ht-at-uit.png";
 
-const IndexPage = () => (
+const HomePage = () => (
   <Fragment>
     <NextSeo title="Home" />
-    <Fade delay={400} className={cx("container flex items-center h-full", common.section)}>
-      <div>
-        <h1 className="text-5xl font-bold mb-8">Hello World!</h1>
-        <p className="text-neutral-900 mb-2">
-          This site is development version of&nbsp;
-          <a
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-1 decoration-2 decoration-solid"
-            href="https://heinthanth.com"
-          >
-            https://heinthanth.com
-          </a>
-        </p>
-        <p className="text-neutral-900 mb-2">
-          But see&nbsp;
-          <Link href="/home">
-            <a
-              className="underline underline-offset-1 decoration-2 decoration-solid"
-              aria-label="click here to view current development verison of https://heinthanth.com"
-            >
-              current development version
-            </a>
-          </Link>
-          &nbsp;here.
-        </p>
-      </div>
-    </Fade>
+    <div className={cx(commonCss.section, homeCss.hero)}>
+      <Fade className="md:grid grid-cols-2 gap-x-4 h-full" delay={400}>
+        <Fragment>
+          <div className="flex flex-col justify-center mb-8 md:mt-[-100px]">
+            <small className="block text-sm mb-3">Hello World, I&apos;m</small>
+            <h1 className="text-5xl font-bold mb-3 ml-[-2px]">HEIN HEIN.</h1>
+            <p>Pro Web Developer, Junior Flutter Developer, Junior DevOps</p>
+          </div>
+          <div className="pr-0 md:pl-32 lg:pl-32 flex items-center justify-center mb-6 md:mt-[-100px]">
+            <img
+              className="border-2 border-solid border-black w-full md:mt-16"
+              src={uitOc}
+              alt="Hein Thant at UIT Open Campus exploring others projects"
+            />
+          </div>
+        </Fragment>
+      </Fade>
+    </div>
   </Fragment>
 );
 
-export default IndexPage;
+export default HomePage;
