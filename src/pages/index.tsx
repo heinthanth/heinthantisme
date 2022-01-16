@@ -28,6 +28,8 @@ const HomePage = () => (
               src={uitOc}
               alt="Hein Thant at UIT Open Campus exploring others projects"
               placeholder={uitOcPlaceholder}
+              width={1376}
+              height={1376}
             />
             <small className="text-neutral-400 text-xs block select-none">
               they, both, are my friends and have asked their permission to use here.
