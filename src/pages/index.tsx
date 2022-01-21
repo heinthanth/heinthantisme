@@ -5,10 +5,11 @@ import cx from "classnames";
 import commonCss from "../components/common.module.sass";
 import homeCss from "./home.module.sass";
 import Image from "../components/image";
-import uitOc from "../assets/images/home-page/ht-at-uit-oc.png";
-import uitOcWebp from "../assets/images/home-page/ht-at-uit-oc.webp";
-import uitOcLowq from "../assets/images/home-page/ht-at-uit-oc-lowq.png";
-import uitOcWebpLowq from "../assets/images/home-page/ht-at-uit-oc-lowq.webp";
+
+import uitOc from "../assets/images/home-page/ht-uit-oc.png";
+import uitOcWebp from "../assets/images/home-page/ht-uit-oc.webp";
+import uitOcLowq from "../assets/images/home-page/ht-uit-oc-0.5x.png";
+import uitOcWebpLowq from "../assets/images/home-page/ht-uit-oc-0.5x.webp";
 
 const HomePage = () => (
   <Fragment>
