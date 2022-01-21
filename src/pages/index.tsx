@@ -4,9 +4,11 @@ import { NextSeo } from "next-seo";
 import cx from "classnames";
 import commonCss from "../components/common.module.sass";
 import homeCss from "./home.module.sass";
-import uitOc from "../assets/images/home-page/ht-at-uit.png";
-import uitOcPlaceholder from "../assets/images/home-page/ht-at-uit.webp";
 import Image from "../components/image";
+import uitOc from "../assets/images/home-page/ht-at-uit-oc.png";
+import uitOcWebp from "../assets/images/home-page/ht-at-uit-oc.webp";
+import uitOcLowq from "../assets/images/home-page/ht-at-uit-oc-lowq.png";
+import uitOcWebpLowq from "../assets/images/home-page/ht-at-uit-oc-lowq.webp";
 
 const HomePage = () => (
   <Fragment>
@@ -24,12 +26,14 @@ const HomePage = () => (
           </div>
           <div className="pr-0 lg:pl-16 flex flex-col justify-center mb-6 lg:mt-[-100px]">
             <Image
-              className="ring-2 ring-black w-full mb-4 lg:mt-16 pointer-events-none select-none"
+              pictureClass="ring-2 ring-black w-full mb-4 lg:mt-16 pointer-events-none select-none"
               src={uitOc}
+              srcWebp={uitOcWebp}
               alt="Hein Thant at UIT Open Campus exploring others projects"
-              placeholder={uitOcPlaceholder}
-              width={1376}
-              height={1376}
+              srcLowq={uitOcLowq}
+              webpLowq={uitOcWebpLowq}
+              width={1024}
+              height={1024}
             />
             <small className="text-neutral-400 text-xs block select-none">
               they, both, are my friends and have asked their permission to use here.

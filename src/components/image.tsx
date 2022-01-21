@@ -1,15 +1,51 @@
-import { createRef, ImgHTMLAttributes, useCallback, useContext, useEffect, useState } from "react";
+import { createRef, Fragment, ImgHTMLAttributes, useEffect, useState } from "react";
 
 // prettier-ignore
-export interface ImageProps extends
-  ImgHTMLAttributes<HTMLImageElement> { placeholder?: string }
+export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement>
+  { srcWebp?: string, webpLowq?: string, srcLowq?: string, pictureClass?: string }
 
-// prettier-ignore
-const Image = ({ src: originSrc, placeholder, alt, ...rest }: ImageProps) => {
+const Image = ({ srcWebp, src, srcLowq, webpLowq, alt, pictureClass, ...rest }: ImageProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const image = createRef<HTMLImageElement>();
-  const [src, setSrc] = useState(placeholder || originSrc);
-  useEffect(() => { image.current && image.current.complete &&
-    image.current.dispatchEvent(new Event("load"))}, [image]);
-  return <img ref={image} src={src} alt={alt} {...rest} onLoad={() => setSrc(originSrc)} /> };
+
+  useEffect(() => {
+    image.current && image.current.complete && image.current.dispatchEvent(new Event("load"));
+  }, [image]);
+
+  return (
+    <picture className={pictureClass}>
+      {webpLowq && isLoading ? (
+        <source srcSet={webpLowq} type="image/webp" />
+      ) : srcWebp ? (
+        <source srcSet={srcWebp} type="image/webp" />
+      ) : null}
+      {srcLowq && isLoading ? (
+        <Fragment>
+          <source srcSet={srcLowq} type="image/png" />
+          <img
+            ref={image}
+            className="w-full h-[auto]"
+            src={srcLowq}
+            alt={alt}
+            {...rest}
+            onLoad={() => setIsLoading(false)}
+          />
+        </Fragment>
+      ) : (
+        <Fragment>
+          <source srcSet={src} type="image/png" />
+          <img
+            ref={image}
+            className="w-full h-[auto]"
+            src={src}
+            alt={alt}
+            {...rest}
+            onLoad={() => setIsLoading(false)}
+          />
+        </Fragment>
+      )}
+    </picture>
+  );
+};
 
 export default Image;
