@@ -29,9 +29,9 @@ const Navbar = () => {
   useEffect(() => {
     const navbar = document.querySelector("#hh-navbar");
     const scrollListener = () =>
-      window.scrollY <= 20
-        ? navbar?.classList.remove("bg-white", "shadow-sm")
-        : navbar?.classList.add("bg-white", "shadow-sm");
+      window.scrollY <= 10
+        ? navbar?.classList.remove(css.goFront)
+        : navbar?.classList.add(css.goFront);
     // prettier-ignore
     const resizeListener = () => window.innerWidth >= 768
         ? (setNavbarOpen(false), setNavbarExpanded(true)) : setNavbarExpanded(false);
