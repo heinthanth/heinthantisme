@@ -22,7 +22,7 @@ const Image = ({ src, srcSet, placeholder, alt, ...props }: ImageProps) => {
         onLoad={() => setLoading(false)}
       />
     );
-  return <img ref={image} src={placeholder} srcSet={srcSet} alt={alt} {...props} />;
+  return <img ref={image} src={src} srcSet={srcSet} alt={alt} {...props} />;
 };
 
 export default Image;

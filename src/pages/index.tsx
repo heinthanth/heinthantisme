@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
 import { NextSeo } from "next-seo";
-import cx from "classnames";
 import Image from "../components/image";
 import homeCss from "./home.module.sass";
 
@@ -12,12 +11,7 @@ import uitOc2x from "../assets/images/home-page/ht-uit-oc@2x.webp";
 const HomePage = () => (
   <Fragment>
     <NextSeo title="Home" />
-    <div
-      className={cx(
-        homeCss.hero,
-        "pt-[calc(80px+1rem)] min-h-[800px] md:max-h-[1000px] md:h-screen pb-4"
-      )}
-    >
+    <div className={homeCss.hero}>
       {/* FIXME: `.hero::before` wrong z position when using `div` instead of `Fade` */}
       <Fade className="lg:grid grid-cols-2 gap-x-4 h-full container">
         <Fragment>
@@ -38,7 +32,6 @@ const HomePage = () => (
               alt="Hein Thant at UIT Open Campus 2018"
               width={512}
               height={512}
-              loading="eager"
             />
             <small className="text-neutral-400 text-xs block select-none">
               they, both, are my friends and have asked their permission to use here.
