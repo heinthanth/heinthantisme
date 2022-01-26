@@ -28,9 +28,9 @@
         opacity: 0
 
 .navbar
-    transition: height, backdrop-filter, box-shadow
-    transition-duration: 200ms, 500ms, 500ms
-    transition-delay: 1800ms, 0ms, 0ms
+    transition-property: height
+    transition-duration: 200ms
+    transition-delay: 1800ms
     width: 100%
     height: 80px
     z-index: 20
@@ -41,18 +41,20 @@
     &[data-expanded="true"]
         transition-delay: 400ms
         height: 100%
-        backdrop-filter: none
 
         @screen lg
             height: 80px
 
     &.goFront
-        background-color: #FFFFFFE1
-        @apply shadow-sm backdrop-blur-sm
+        background-color: white
+        @apply shadow-sm
 
-    &.goFront[data-expanded="true"]
-        backdrop-filter: unset
-        background-color: unset
+    &[data-expanded="true"].goFront
+        @apply shadow-none
+        transition-property: height, background-color
+        transition-duration: 200ms, 300ms
+        transition-delay: 0.4s, 0.3s
+        background-color: transparent
 
 .toggleButton
     width: 24px
@@ -102,16 +104,25 @@
         &:hover
             .logoExtra
                 opacity: 1
+                transition-delay: .4s
 
             &::after
+                left: 0
+                right: unset
                 width: 100%
+                transition-delay: 1s
 
         .logoExtra
             opacity: 0
-            transition: opacity 0.2s
+            transition: opacity .4s ease-in-out
+            transition-delay: 1s
 
         &::after
             @include indicatorStick()
+            transition: width .4s ease-in-out
+            transition-delay: .4s
+            right: 0
+            left: unset
 
 .navMenu
     @for $i from 1 through 5

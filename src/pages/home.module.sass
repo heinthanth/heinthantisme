@@ -5,7 +5,12 @@
     background-size: cover
     background-repeat: no-repeat
     background-position: center
-    @apply min-h-[800px] md:max-h-[1000px] md:h-screen pb-4
+    min-height: 720px
+    padding-bottom: 1rem
+
+    @screen md
+        max-height: 800px
+        height: 100vh
 
     &::before
         content: ""

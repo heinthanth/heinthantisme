@@ -15,15 +15,15 @@ const HomePage = () => (
       {/* FIXME: `.hero::before` wrong z position when using `div` instead of `Fade` */}
       <Fade className="lg:grid grid-cols-2 gap-x-4 h-full container">
         <Fragment>
-          <div className="flex flex-col justify-center mb-8 lg:mt-[-100px]">
+          <div className="flex flex-col justify-center mb-4 lg:mt-[-80px]">
             <small className="block text-sm mb-4">Hi there, It&apos;s me,</small>
             <h1 className="text-5xl font-bold mb-4 ml-[-2px] select-none">HEIN HEIN.</h1>
-            <p className="text-justify mb-5">
-              Just a CS student, Full Stack Web Developer, Junior Flutter Developer, Junior DevOps,
-              Linux and Open Source Enthusiastic.
+            <p className="text-justify mb-5 break-all [hyphens:auto]">
+              Just a Computer Science student, Full Stack Web Developer, Junior Flutter Developer, Junior DevOps,
+              Linux, Open Source Enthusiastic and Beginner EDM Producer.
             </p>
           </div>
-          <div className="pr-0 lg:pl-2 xl:pl-32 flex flex-col justify-center mb-6 lg:mt-[-100px]">
+          <div className="pr-0 lg:pl-2 xl:pl-[8.5rem] flex flex-col justify-center mb-6 lg:mt-[-80px]">
             <Image
               className="ring-2 ring-[#333] w-full mb-4 lg:mt-16 pointer-events-none select-none"
               src={uitOc}
