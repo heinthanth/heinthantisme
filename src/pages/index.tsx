@@ -20,7 +20,7 @@ const HomePage = () => (
             <h1 className="text-5xl font-bold mb-4 ml-[-2px] select-none">HEIN HEIN.</h1>
             <p className="text-justify mb-5 break-all [hyphens:auto]">
               Just a Computer Science student, Full Stack Web Developer, Junior Flutter Developer, Junior DevOps,
-              Linux, Open Source Enthusiastic and Beginner EDM Producer.
+              Linux, Open Source Enthusiast and Beginner EDM Producer.
             </p>
           </div>
           <div className="pr-0 lg:pl-2 xl:pl-[8.5rem] flex flex-col justify-center mb-6 lg:mt-[-80px]">
