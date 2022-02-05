@@ -1,1 +1,1 @@
-const withOptimizedImages=require("next-optimized-images");module.exports=withOptimizedImages({reactStrictMode:!0,pageExtensions:["tsx"],poweredByHeader:!1,experimental:{esmExternals:!1},images:{disableStaticImages:!0,handleImages:["jpeg","png","svg","webp","gif","ico"]}});
+const withOptimizedImages=require("next-optimized-images");module.exports=withOptimizedImages({reactStrictMode:!0,pageExtensions:["tsx"],poweredByHeader:!1,images:{disableStaticImages:!0,handleImages:["jpeg","png","svg","webp","gif","ico"]}});
