@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { Fade } from "react-awesome-reveal";
 import { NextSeo } from "next-seo";
 import Img from "react-optimized-image";
 import homeCss from "./home.module.sass";
@@ -12,8 +11,7 @@ const HomePage = () => (
       className={homeCss.hero}
       style={{ backgroundImage: `url(${require("../assets/images/home-page/banner.webp")})` }}
     >
-      {/* FIXME: `.hero::before` wrong z position when using `div` instead of `Fade` */}
-      <Fade className="lg:grid grid-cols-2 gap-x-4 h-full container">
+      <div className="lg:grid grid-cols-2 gap-x-4 h-full container">
         <Fragment>
           <div className="flex flex-col justify-center mb-4 lg:mt-[-80px]">
             <small className="block text-sm mb-4">Hi there, It&apos;s me,</small>
@@ -37,7 +35,7 @@ const HomePage = () => (
             </small>
           </div>
         </Fragment>
-      </Fade>
+      </div>
     </div>
   </Fragment>
 );
