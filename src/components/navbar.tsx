@@ -116,7 +116,10 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className={cx("bg-white fixed w-full h-full z-10", css.over)}></div>
+      <div
+        className={cx("bg-white fixed w-full h-full z-10", css.over)}
+        style={{ backgroundImage: `url(${require("../assets/images/home-page/banner.webp")})` }}
+      ></div>
     </Fragment>
   );
 };
