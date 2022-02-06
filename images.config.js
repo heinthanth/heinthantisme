@@ -1,1 +1,1 @@
-module.exports={default:{webp:!0,sizes:[640,768,1024,1280,1280],breakpoints:[640,768,1024,1280,1280]}};
+module.exports={default:{webp:!0,sizes:[640,768,1024,1280,1536],breakpoints:[640,768,1024,1280,1536]}};

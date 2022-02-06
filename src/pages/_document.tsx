@@ -4,7 +4,7 @@ import NoScript from "../components/noscript";
 const Document = () => (
   <Html lang="en">
     <Head />
-    <body>
+    <body className="font-mono">
       <NoScript />
       <Main />
       <NextScript />
