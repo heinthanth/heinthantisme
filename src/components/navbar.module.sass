@@ -1,3 +1,5 @@
+@import "./_navbar.variables"
+
 @mixin indicatorStick()
     content: ""
     position: absolute
@@ -12,16 +14,17 @@
 
 .over
     opacity: 0
-    transition: opacity 400ms
-    transition-delay: 2200ms
+    transition-property: opacity
+    transition-duration: 400ms
+    transition-delay: $over-opacity-close
     pointer-events: none
     background-size: cover
     background-position: right
     background-repeat: no-repeat
 
 .navbar[data-expanded="true"] + .over
-    transition-delay: 0ms
     opacity: 1
+    transition-delay: $over-opacity-open
 
     @screen lg
         opacity: 0
@@ -29,7 +32,7 @@
 .navbar
     transition-property: height
     transition-duration: 200ms
-    transition-delay: 1800ms
+    transition-delay: $navbar-height-collapse
     width: 100%
     height: 80px
     z-index: 20
@@ -38,7 +41,7 @@
     left: 0
 
     &[data-expanded="true"]
-        transition-delay: 400ms
+        transition-delay: $navbar-height-expand
         height: 100%
 
         @screen lg
@@ -49,11 +52,11 @@
         @apply shadow-sm
 
     &[data-expanded="true"].goFront
-        @apply shadow-none
         transition-property: height, background-color
         transition-duration: 200ms, 300ms
-        transition-delay: 0.4s, 0.3s
+        transition-delay: $navbar-height-expand, $navbar-bg-color
         background-color: transparent
+        @apply shadow-none
 
 .toggleButton
     width: 24px
@@ -86,14 +89,14 @@
 
 .contactMail
     transition: opacity 200ms
-    transition-delay: 400ms
+    transition-delay: $contact-mail-disappear
     opacity: 0
 
     @screen lg
         opacity: 1
 
 .navbar[data-expanded="true"] .contactMail
-    transition-delay: 1800ms
+    transition-delay: $contact-mail-appear
     opacity: 1
 
 .logo
@@ -124,14 +127,14 @@
             left: unset
 
 .navMenu
-    @for $i from 1 through 5
+    @for $i from 1 through $navitem-count
         li:nth-child(#{$i}) .navLink
-            transition-delay: #{800ms + (5 - $i) * 150ms}
+            transition-delay: #{$navitem-start-open + ($navitem-count - $i) * $navitem-duration-gap}
 
 .navbar[data-expanded="true"] .navMenu
-    @for $i from 1 through 5
+    @for $i from 1 through $navitem-count
         li:nth-child(#{$i}) .navLink
-            transition-delay: #{800ms + ($i - 1) * 150ms}
+            transition-delay: #{$navitem-start-open + ($i - 1) * $navitem-duration-gap}
 
 .navMenu li:last-child > .navLink
     padding-right: 0

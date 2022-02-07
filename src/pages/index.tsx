@@ -16,7 +16,6 @@ const HomePage = () => (
       <div className="grid lg:grid-cols-2 gap-x-4 gap-y-8 h-full container">
         <Fragment>
           <div className="flex flex-col justify-center lg:mt-[-80px]">
-            <small className="block text-sm mb-4">Hi there, I&apos;m</small>
             <h1 className="text-[2.95rem] leading-none sm:text-5xl font-bold mb-4 ml-[-2px] select-none">
               HEIN THANT.
             </h1>
@@ -26,10 +25,14 @@ const HomePage = () => (
             </p>
             <div className="flex space-x-4 text-[0.95rem]">
               <Link href="#">
-                <a className="inline-block w-fit ring ring-black ring-2 p-2">creations</a>
+                <a className="inline-block w-fit ring ring-black ring-2 py-2 px-3 hover:bg-black hover:text-white transition-[background-color,color] duration-300">
+                  creations
+                </a>
               </Link>
               <Link href="#">
-                <a className="inline-block w-fit ring ring-black ring-2 p-2">curriculum vitae</a>
+                <a className="inline-block w-fit ring ring-black ring-2 py-2 px-3 bg-black text-white">
+                  curriculum vitae
+                </a>
               </Link>
             </div>
           </div>

@@ -1,10 +1,22 @@
 import Link from "next/link";
 import cx from "classnames";
 import css from "./navbar.module.sass";
-import { NavbarRoutes } from "../misc/routes";
 import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import type { ReactNode } from "react";
+
+const NavbarRoutes: {
+  uri: string;
+  label: ReactNode;
+  ariaLabel?: string;
+}[] = [
+  { uri: "/", ariaLabel: "Go to website Home Page", label: "INDEX ZERO" },
+  { uri: "/about", ariaLabel: "Read more about Hein Thant", label: "WHO I AM" },
+  { uri: "/creations", ariaLabel: "Explore Hein Thant's creations", label: "CREATIONS" },
+  { uri: "/articles", ariaLabel: "Read articles From Hein Thant", label: "ARTICLES" },
+  { uri: "/contact", ariaLabel: "Get in touch with Hein Thant", label: "CONTACT ME" },
+]; // navigation routes
 
 const Navbar = () => {
   const { pathname } = useRouter();

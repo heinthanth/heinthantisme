@@ -21,8 +21,8 @@ const HeinHeinSpace = ({
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.webp" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.webp" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.webp" />
+      <link rel="icon" type="image/webp" sizes="32x32" href="/icons/favicon-32x32.webp" />
+      <link rel="icon" type="image/webp" sizes="16x16" href="/icons/favicon-16x16.webp" />
       <link rel="manifest" href="/space.webmanifest" />
       <meta key="color-scheme" name="color-scheme" content={theme} />
       <meta key="theme-color" name="theme-color" content="#FFFFFF" />
