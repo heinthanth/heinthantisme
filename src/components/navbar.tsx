@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
+import heroBanner from "../assets/images/home-page/banner.png";
 
 const NavbarRoutes: {
   uri: string;
@@ -130,7 +131,7 @@ const Navbar = () => {
       </nav>
       <div
         className={cx("bg-white fixed w-full h-full z-10", css.over)}
-        style={{ backgroundImage: `url(${require("../assets/images/home-page/banner.webp")})` }}
+        style={{ backgroundImage: `url(${heroBanner})` }}
       ></div>
     </Fragment>
   );
