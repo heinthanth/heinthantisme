@@ -5,6 +5,7 @@ import type { ThemeState } from "../redux/states/theme";
 import Navbar from "./navbar";
 import cx from "classnames";
 import { DefaultSeo as SEO } from "next-seo";
+import Script from "next/script";
 import defaultSEO from "../misc/seo.config";
 
 const HeinHeinSpace = ({
@@ -22,6 +23,7 @@ const HeinHeinSpace = ({
     <main id="hh-main">
       <Component {...pageProps} />
     </main>
+    <Script src="/_init/webp-detect.js" strategy="beforeInteractive" />
   </div>
 );
 

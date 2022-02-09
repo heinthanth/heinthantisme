@@ -21,6 +21,10 @@
     background-size: cover
     background-position: right
     background-repeat: no-repeat
+    background-image: var(--bg-webp)
+
+    :global(html.no-webp) &
+        background-image: var(--bg)
 
 .navbar[data-expanded="true"] + .over
     opacity: 1

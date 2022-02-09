@@ -7,6 +7,10 @@
     background-repeat: no-repeat
     min-height: 720px
     padding-bottom: 1rem
+    background-image: var(--bg-webp)
+
+    :global(html.no-webp) &
+        background-image: var(--bg)
 
     @screen md
         max-height: 800px

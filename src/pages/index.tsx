@@ -4,16 +4,18 @@ import Img from "react-optimized-image";
 import homeCss from "./home.module.sass";
 import uitOc from "../assets/images/home-page/ht-uit-oc.png";
 import heroBanner from "../assets/images/home-page/banner.png";
+import heroBannerWebp from "../assets/images/home-page/banner.png?webp";
+import cx from "classnames";
 import Link from "next/link";
 
 const HomePage = () => (
   <Fragment>
     <NextSeo title="Home" />
-    <div
-      className={homeCss.hero}
-      // prettier-ignore
-      style={{ backgroundImage: `url(${heroBanner}), linear-gradient(rgba(255, 255, 255, .4),rgba(255, 255, 255, .4)` }}
-    >
+    <div className={cx(homeCss.hero, "home_hero")}>
+      {/* prettier-ignore */}
+      <style jsx>
+        {`.home_hero { --bg: url(${heroBanner}), linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)); --bg-webp: url(${heroBannerWebp}), linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)); }`}
+      </style>
       <div className="grid lg:grid-cols-2 gap-x-4 gap-y-8 h-full container select-none">
         <div className="flex flex-col justify-center lg:mt-[-80px]">
           <h1 className="text-[2.95rem] leading-none sm:text-5xl font-bold mb-4 ml-[-2px]">

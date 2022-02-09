@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 import heroBanner from "../assets/images/home-page/banner.png";
+import heroBannerWebp from "../assets/images/home-page/banner.png?webp";
 
 const NavbarRoutes: {
   uri: string;
@@ -129,10 +130,12 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div
-        className={cx("bg-white fixed w-full h-full z-10", css.over)}
-        style={{ backgroundImage: `url(${heroBanner})` }}
-      ></div>
+      <div className={cx("bg-white fixed w-full h-full z-10 navbar_over", css.over)}>
+        {/* prettier-ignore */}
+        <style jsx>
+          {`.navbar_over { --bg: url(${heroBanner}); --bg-webp: url(${heroBannerWebp}); }`}
+        </style>
+      </div>
     </Fragment>
   );
 };
