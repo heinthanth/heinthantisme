@@ -9,7 +9,7 @@ const NoScriptPageComp = ({ isNoScript = true }: { isNoScript?: boolean }) => (
   <NoScriptWrapper shouldWrap={isNoScript}>
     <NextSeo title="Oops, need JavaScript!" />
     <div
-      className="fixed w-full h-full   flex items-center z-50 bg-cover bg-center"
+      className="fixed w-full h-full flex items-center z-50 bg-cover bg-center"
       // prettier-ignore
       style={{ backgroundImage: `url(${backgroundBanner}), linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1))`, backgroundBlendMode: "multiply" }}
     >
