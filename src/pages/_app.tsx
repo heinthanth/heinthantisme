@@ -31,7 +31,7 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
     <div id="hh-space" className={cx(theme.value, "font-mono")} data-theme={theme.value}>
       <SEO {...defaultSEO(theme.value)} />
       <Navbar />
-      <main id="hh-main">{false ? <Loading /> : <Component {...pageProps} />}</main>
+      <main id="hh-main"><Component {...pageProps} /></main>
       <Script src="/_init/webp-detect.js" strategy="beforeInteractive" />
     </div>
   );
