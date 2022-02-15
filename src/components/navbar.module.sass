@@ -43,10 +43,13 @@
     position: fixed
     top: 0
     left: 0
+    display: flex
+    overflow: hidden
 
     &[data-expanded="true"]
         transition-delay: $navbar-height-expand
         height: 100%
+        overflow-y: scroll
 
         @screen lg
             height: 80px
@@ -60,7 +63,7 @@
         transition-duration: 200ms, 300ms
         transition-delay: $navbar-height-expand, $navbar-bg-color
         background-color: transparent
-        @apply shadow-none
+        box-shadow: none
 
 .toggleButton
     width: 24px
@@ -70,23 +73,23 @@
         outline: none
 
     span:nth-child(1)
-        @apply -translate-y-2
+        transform: translateY(-0.5rem)
 
     span:nth-child(2)
         opacity: 1
 
     span:nth-child(3)
-        @apply translate-y-2
+        transform: translateY(0.5rem)
 
     &[data-expanded="true"]
         span:nth-child(1)
-            @apply translate-y-0 rotate-45
+            transform: translateY(0rem) rotate(45deg)
 
         span:nth-child(2)
             @apply opacity-0 translate-x-3
 
         span:nth-child(3)
-            @apply translate-y-0 -rotate-45
+            transform: translateY(0rem) rotate(-45deg)
 
     @screen lg
         @apply hidden
@@ -105,6 +108,7 @@
 
 .logo
     position: relative
+    @apply ease-in-out
 
     @screen lg
         &:hover
@@ -120,12 +124,12 @@
 
         .logoExtra
             opacity: 0
-            transition: opacity .4s ease-in-out
+            transition: opacity .4s
             transition-delay: 1s
 
         &::after
             @include indicatorStick()
-            transition: width .4s ease-in-out
+            transition: width .4s
             transition-delay: .4s
             right: 0
             left: unset
@@ -171,3 +175,6 @@
     @screen lg
         left: .75rem
         width: calc( 100% - 1.5rem )
+
+.navMenu li:last-child > .navLink > .routeIndicator
+    width: 100%

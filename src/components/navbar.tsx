@@ -65,7 +65,7 @@ const Navbar = () => {
     <Fragment>
       <nav
         id="hh-navbar"
-        className={cx("flex items-center select-none overflow-hidden", css.navbar)}
+        className={cx("select-none", css.navbar)}
         data-expanded={navbarOpen}
       >
         <div className="container h-full lg:h-[unset] flex flex-col lg:flex-row lg:items-center justify-between">

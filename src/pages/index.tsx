@@ -17,7 +17,7 @@ const HomePage = () => (
         {`.home_hero { --bg: url(${heroBanner}), linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)); --bg-webp: url(${heroBannerWebp}), linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)); }`}
       </style>
       <div className="grid lg:grid-cols-2 gap-x-4 gap-y-8 h-full container select-none">
-        <div className="flex flex-col justify-center lg:mt-[-80px]">
+        <div className="flex flex-col justify-center lg:mt-[-120px]">
           <h1 className="text-[2.95rem] leading-none sm:text-5xl font-bold mb-4 ml-[-2px]">
             HEIN THANT.
           </h1>
@@ -27,12 +27,12 @@ const HomePage = () => (
           </p>
           <div className="flex space-x-4 text-[0.95rem]">
             <Link href="#">
-              <a className="inline-block w-fit ring ring-black ring-2 py-2 px-3 hover:bg-black hover:text-white transition-[background-color,color] duration-300">
+              <a className="inline-block w-fit ring-black ring-2 py-2 px-3 hover:bg-black hover:text-white transition-[background-color,color] duration-300">
                 creations
               </a>
             </Link>
             <Link href="#">
-              <a className="inline-block w-fit ring ring-black ring-2 py-2 px-3 bg-black text-white">
+              <a className="inline-block w-fit ring-black ring-2 py-2 px-3 bg-black text-white">
                 curriculum vitae
               </a>
             </Link>

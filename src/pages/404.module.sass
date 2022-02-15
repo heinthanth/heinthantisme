@@ -1,0 +1,12 @@
+.screen
+    background-image: var(--bg-webp)
+    background-blend-mode: multiply
+    min-height: 600px
+    @apply bg-white flex items-center bg-cover bg-center
+
+    :global(html.no-webp) &
+        background-image: var(--bg)
+
+    @screen md
+        max-height: 800px
+        height: 100vh
