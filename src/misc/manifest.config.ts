@@ -1,5 +1,3 @@
-import { Blob as nodeBlob } from "buffer";
-import { URL as nodeURL } from "url";
 import { siteURL } from "./constants";
 import chrome192 from "../assets/images/icons/android-chrome-192x192.png";
 import chrome512 from "../assets/images/icons/android-chrome-512x512.png";
@@ -25,8 +23,6 @@ const manifestString = (_theme: string) => JSON.stringify({
   display: "standalone" });
 
 // prettier-ignore
-const defaultManifest = (theme: string) => typeof window === "undefined"
-  ? nodeURL.createObjectURL(new nodeBlob([manifestString(theme)], { type: "application/json" }))
-  : URL.createObjectURL(new Blob([manifestString(theme)], { type: "application/json" }));
+const defaultManifest = (theme: string) => `data:application/manifest+json;base64,${btoa(manifestString(theme))}`;
 
 export default defaultManifest;

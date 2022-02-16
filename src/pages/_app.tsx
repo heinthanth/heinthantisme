@@ -8,31 +8,29 @@ import { DefaultSeo as SEO } from "next-seo";
 import Script from "next/script";
 import defaultSEO from "../misc/seo.config";
 import "./_app.sass";
-// import Loading from "../components/loading";
-// import { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Loading from "../components/loading";
+import { AnimatePresence } from "framer-motion";
 
 const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
-  // const [loading, setLoading] = useState(false);
-  // const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const handleStart = (url: string) =>
-  //     url !== router.pathname ? setLoading(true) : setLoading(false);
-  //   const handleComplete = () => setLoading(false);
-  //   router.events.on("routeChangeStart", handleStart);
-  //   router.events.on("routeChangeComplete", handleComplete);
-  //   router.events.on("routeChangeError", handleComplete);
-  //   setLoading(false);
-  // }, [router]);
+  useEffect(() => {
+    const windowOnLoad = () =>
+      new Promise((resolve) => setTimeout(resolve, 1000)).then(() => setLoading(false));
+    window.addEventListener("load", windowOnLoad);
+    return () => window.removeEventListener("load", windowOnLoad);
+  }, []);
 
   return (
-    <div id="hh-space" className={cx(theme.value, "font-mono")} data-theme={theme.value}>
+    <div id="hh-space" className={cx(theme.value, "font-mono")}>
       <SEO {...defaultSEO(theme.value)} />
       <Navbar />
-      <main id="hh-main"><Component {...pageProps} /></main>
+      <main id="hh-main">
+        <Component {...pageProps} />
+      </main>
       <Script src="/_init/webp-detect.js" strategy="beforeInteractive" />
+      <AnimatePresence>{loading && <Loading />}</AnimatePresence>
     </div>
   );
 };
