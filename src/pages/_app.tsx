@@ -15,7 +15,6 @@ import { sleep } from "../misc/helper";
 
 const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
   const [loading, setLoading] = useState(true);
-  const [renderPreLoader, setRenderPreLoader] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,9 +26,6 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
           onResourceLoaded(); break; }
         await sleep(2000); }
     })(); // not good but safari :(
-
-    const isLighthouse = (process.env.NEXT_PUBLIC_LIGHTHOUSE || "false") === "true";
-    setRenderPreLoader(!isLighthouse); // hide on server side
   }, []);
 
   useEffect(() => {
@@ -48,7 +44,7 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
       <main id="hh-main">
         <Component {...pageProps} />
       </main>
-      {renderPreLoader && <PreLoader visible={loading} />}
+      <PreLoader visible={loading} />
       <Script src="/_init/webp-detect.js" strategy="beforeInteractive" />
     </div>
   );
