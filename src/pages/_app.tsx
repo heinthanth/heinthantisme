@@ -18,14 +18,17 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
   const router = useRouter();
 
   useEffect(() => {
-    const onResourceLoaded = () => sleep(1000).then(() => setLoading(false));
+    const onResourceLoaded = () => setLoading(false);
+
     // prettier-ignore
     (async () => {
       while (true) {
-        if (document.readyState === "complete") {
-          onResourceLoaded(); break; }
-        await sleep(2000); }
+        if (document.readyState === "complete")
+          return onResourceLoaded();
+        await sleep(500); }
     })(); // not good but safari :(
+
+    console.info("HELLO");
   }, []);
 
   useEffect(() => {

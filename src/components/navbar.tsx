@@ -25,10 +25,17 @@ const Navbar = () => {
   // prettier-ignore
   const initIndex = NavbarRoutes.findIndex(({ uri }) =>
     uri === "/" ? pathname === uri : pathname.includes(uri));
-  const currentRouteIndex = initIndex === -1 ? 0 : initIndex;
+  const [currentRouteIndex, setCurrentRouteIndex] = useState(initIndex === -1 ? 0 : initIndex);
   const [indicatorIndex, setIndicatorIndex] = useState(currentRouteIndex);
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [navbarExpanded, setNavbarExpanded] = useState(navbarOpen);
+
+  useEffect(() => {
+    // prettier-ignore
+    const currentIndex = NavbarRoutes.findIndex(({ uri }) =>
+      uri === "/" ? pathname === uri : pathname.includes(uri));
+    setCurrentRouteIndex(currentIndex);
+  }, [pathname]);
 
   useEffect(() => {
     const elem = document.body;
@@ -63,11 +70,7 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <nav
-        id="hh-navbar"
-        className={cx("select-none", css.navbar)}
-        data-expanded={navbarOpen}
-      >
+      <nav id="hh-navbar" className={cx("select-none", css.navbar)} data-expanded={navbarOpen}>
         <div className="container h-full lg:h-[unset] flex flex-col lg:flex-row lg:items-center justify-between">
           <div className="flex items-center justify-between min-h-[80px] lg:min-h-[unset] lg:h-[unset]">
             <Link href="/">
