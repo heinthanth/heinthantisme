@@ -1,5 +1,7 @@
 import { siteURL } from "./constants";
 
-const absURL = (path: string): string => (path.startsWith("data:") ? path : `${siteURL}${path}`);
+export const absURL = (path: string): string =>
+  path.startsWith("data:") ? path : `${siteURL}${path}`;
 
-export { absURL };
+export const sleep = (milliseconds: number) =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));

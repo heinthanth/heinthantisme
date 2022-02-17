@@ -8,19 +8,38 @@ import { DefaultSeo as SEO } from "next-seo";
 import Script from "next/script";
 import defaultSEO from "../misc/seo.config";
 import "./_app.sass";
+import PreLoader from "../components/preloader";
 import { useEffect, useState } from "react";
-import Loading from "../components/loading";
-import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
+import { sleep } from "../misc/helper";
 
 const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
   const [loading, setLoading] = useState(true);
+  const [renderPreLoader, setRenderPreLoader] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    const windowOnLoad = () =>
-      new Promise((resolve) => setTimeout(resolve, 1000)).then(() => setLoading(false));
-    window.addEventListener("load", windowOnLoad);
-    return () => window.removeEventListener("load", windowOnLoad);
+    const onResourceLoaded = () => sleep(1000).then(() => setLoading(false));
+    // prettier-ignore
+    (async () => {
+      while (true) {
+        if (document.readyState === "complete") {
+          onResourceLoaded(); break; }
+        await sleep(2000); }
+    })(); // not good but safari :(
+
+    const isLighthouse = (process.env.NEXT_PUBLIC_LIGHTHOUSE || "false") === "true";
+    setRenderPreLoader(!isLighthouse); // hide on server side
   }, []);
+
+  useEffect(() => {
+    const handleStart = (url: string) => url !== router.pathname && setLoading(true);
+    const handleComplete = () => setLoading(false);
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+  }, [router.pathname, router.events]);
 
   return (
     <div id="hh-space" className={cx(theme.value, "font-mono")}>
@@ -29,8 +48,8 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
       <main id="hh-main">
         <Component {...pageProps} />
       </main>
+      {renderPreLoader && <PreLoader visible={loading} />}
       <Script src="/_init/webp-detect.js" strategy="beforeInteractive" />
-      <AnimatePresence>{loading && <Loading />}</AnimatePresence>
     </div>
   );
 };
