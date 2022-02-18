@@ -28,7 +28,12 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
         await sleep(500); }
     })(); // not good but safari :(
 
-    console.info("HELLO");
+    const ascii =
+      "\nWELCOME TO THE HIIIiN's SPACE.\n\n██╗  ██╗██╗██╗██╗██╗███╗   ██╗\n██║  ██║██║██║██║██║████╗  ██║\n███████║██║██║██║██║██╔██╗ ██║\n██╔══██║██║██║██║██║██║╚██╗██║\n██║  ██║██║██║██║██║██║ ╚████║\n╚═╝  ╚═╝╚═╝╚═╝╚═╝╚═╝╚═╝  ╚═══╝\n\n%cHOLD UP!%c THIS IS A BROWSER FEATURE INTENDED FOR WEB DEVELOPERS TO HELP DEBUGGING WEB TECHNOLOGIES AND JAVASCRIPT\nIF SOMEONE TOLD YOU TO %cCOPY / PASTE SOMETHING HERE%c TO GET SOMETHING SPECIAL, %cIT'S A SCAM%c AND GIVE THEM YOURS. SEE MORE: https://en.wikipedia.org/wiki/Self-XSS\n";
+
+    // prettier-ignore
+    console.info(ascii, "color: red", "color: unset",
+        "color: red", "color: unset", "color: red", "color: unset");
   }, []);
 
   useEffect(() => {

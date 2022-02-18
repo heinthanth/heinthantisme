@@ -10,7 +10,7 @@ const PreLoader = ({ visible }: { visible: boolean }) => (
         initial={false}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ delay: isLightHouse ? 0 : 1, duration: 0.4 }}
+        transition={{ delay: isLightHouse ? 0 : 0.4, duration: 0.4 }}
         className={css.preloader}
       >
         <div className="font-sourceCodePro animate-pulse">$H3iN-&gt;isLoading();</div>
