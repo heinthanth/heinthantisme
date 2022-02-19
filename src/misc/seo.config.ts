@@ -1,5 +1,13 @@
 import { DefaultSeoProps } from "next-seo";
-import { siteName, siteURL, description, coverLocation, creator, searchWords } from "./constants";
+import {
+  siteName,
+  siteURL,
+  description,
+  coverLocation,
+  creatorName,
+  searchWords,
+  creatorUsername,
+} from "./constants";
 import defaultManifest from "./manifest.config";
 import appleIcon from "../assets/images/icons/apple-touch-icon.png";
 // @ts-ignore
@@ -14,7 +22,7 @@ const defaultSEO = (theme: string): DefaultSeoProps => ({
   description: description,
   canonical: siteURL,
   additionalMetaTags: [
-    { name: "creator", content: creator },
+    { name: "creator", content: creatorName },
     { name: "keywords", content: searchWords.join(",") },
     { name: "theme-color", content: "#FFFFFF" },
     { name: "color-scheme", content: theme },
@@ -27,7 +35,7 @@ const defaultSEO = (theme: string): DefaultSeoProps => ({
     { rel: "icon", type: "image/png", sizes: "16x16", href: favicon16.toString() },
     { rel: "apple-touch-icon", sizes: "180x180", href: absURL(appleIcon.toString()) },
   ],
-  twitter: { cardType: "summary_large_image", handle: "@heinthanth" },
+  twitter: { cardType: "summary_large_image", handle: `@${creatorUsername}` },
   openGraph: { type: "website", site_name: siteName, images: [coverLocation] },
 });
 

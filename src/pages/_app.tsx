@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import type { AppState } from "../redux/states";
 import Navbar from "../components/navbar";
 import cx from "classnames";
-import { DefaultSeo as SEO } from "next-seo";
+import { DefaultSeo as SEO, SocialProfileJsonLd } from "next-seo";
 import Script from "next/script";
 import defaultSEO from "../misc/seo.config";
 import "./_app.sass";
@@ -12,6 +12,7 @@ import PreLoader from "../components/preloader";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { sleep } from "../misc/helper";
+import { creatorName, siteURL, socialLinks } from "../misc/constants";
 
 const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
   const [loading, setLoading] = useState(true);
@@ -54,6 +55,12 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
   return (
     <div id="hh-space" className={cx(theme.value, "font-mono")}>
       <SEO {...defaultSEO(theme.value)} />
+      <SocialProfileJsonLd
+        type="Person"
+        name={creatorName}
+        url={siteURL}
+        sameAs={Object.values(socialLinks)}
+      />
       <Navbar />
       <main id="hh-main">
         <Component {...pageProps} />
