@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import { ReduxWrapper } from "../redux";
 import { connect } from "react-redux";
 import type { AppState } from "../redux/states";
@@ -43,6 +43,12 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
     router.events.on("routeChangeStart", handleStart);
     router.events.on("routeChangeComplete", handleComplete);
     router.events.on("routeChangeError", handleComplete);
+
+    // prettier-ignore
+    return () => (
+      router.events.off("routeChangeStart", handleStart),
+      router.events.off("routeChangeComplete", handleComplete),
+      router.events.off("routeChangeError", handleComplete));
   }, [router.pathname, router.events]);
 
   return (
@@ -57,5 +63,8 @@ const CustomApp = ({ Component, pageProps, theme }: AppProps & AppState) => {
     </div>
   );
 };
+
+// log performance
+export const reportWebVitals = (metrics: NextWebVitalsMetric) => console.debug(metrics);
 
 export default ReduxWrapper.withRedux(connect(({ theme }: AppState) => ({ theme }))(CustomApp));
