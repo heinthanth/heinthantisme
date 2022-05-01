@@ -1,0 +1,2 @@
+[*.{astro,svelte}]
+tab_width = 4

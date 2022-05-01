@@ -1,0 +1,1 @@
+import{defineConfig}from"astro/config";import svelte from"@astrojs/svelte";import sveltePreprocess from"svelte-preprocess";export default defineConfig({integrations:[svelte({preprocess:sveltePreprocess()})]});
