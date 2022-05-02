@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# compress configurations
+npx coffee tools/compress.coffee
+
+# update git status
+git add .
