@@ -1,1 +1,1 @@
-import{defineConfig}from"astro/config";import svelte from"@astrojs/svelte";import sveltePreprocess from"svelte-preprocess";export default defineConfig({integrations:[svelte({preprocess:sveltePreprocess()})]});
+import{defineConfig}from"astro/config";import svelte from"@astrojs/svelte";import sveltePreprocess from"svelte-preprocess";import sitemap from"@astrojs/sitemap";import turbolinks from"@astrojs/turbolinks";export default defineConfig({site:"https://heinthantisme.pages.dev",integrations:[svelte({preprocess:sveltePreprocess()}),sitemap(),turbolinks()]});
