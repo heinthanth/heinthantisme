@@ -1,2 +1,2 @@
-[*.{astro,svelte}]
+[*.{astro,svelte,sass}]
 tab_width = 4
