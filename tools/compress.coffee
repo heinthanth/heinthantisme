@@ -13,7 +13,7 @@ compressJson = (...ps) ->
 compressJavaScript = (...ps) ->
     (ps.map (p) -> resolve root, p).forEach (p) ->
         content = readFileSync p, encoding: "utf-8"
-        writeFileSync p, (await minify content).code
+        writeFileSync p, (await minify content, format: comments: "all").code
 
 compressJavaScript "astro.config.mjs", ".prettierrc.js"
 compressJson "package.json", "package-lock.json", "tsconfig.json"
