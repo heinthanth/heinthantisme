@@ -1,0 +1,19 @@
+@use "sass:map"
+    
+$breakpoints: (xs: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px)
+$containerMaxWidths: (xs: 100%, sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1320px)
+
+.containerBase
+    margin-left: auto
+    margin-right: auto
+    padding-left: 1rem
+    padding-right: 1rem
+    width: 100%
+
+.container
+    @extend .containerBase
+
+@each $name, $size in $breakpoints
+    @media screen and ( min-width: $size )
+        .container
+            max-width: map.get($containerMaxWidths, #{$name})
