@@ -1,5 +1,5 @@
-import cr192 from "../assets/icons/android-chrome-192x192.png";
-import cr512 from "../assets/icons/android-chrome-512x512.png";
+import cr192 from "../../assets/icons/android-chrome-192x192.png";
+import cr512 from "../../assets/icons/android-chrome-512x512.png";
 import { absURL } from "./utils";
 import * as k from "./constants";
 import siteURL from "./siteURL.mjs";

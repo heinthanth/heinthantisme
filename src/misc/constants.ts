@@ -1,5 +1,5 @@
 import { absURL } from "./utils";
-import cover from "../assets/pics/cover.png";
+import cover from "../../assets/pics/cover.png";
 
 export const siteName = "Hein Thant's Space";
 export const siteShortName = "Hein's Space";
