@@ -1,4 +1,5 @@
 import { absURL } from "./utils";
+import siteURL from "./siteURL.mjs";
 import cover from "../../assets/pics/cover.png";
 
 export const siteName = "Hein Thant's Space";
@@ -11,8 +12,11 @@ export const searchWords =
   ["Hein Thant Maung Maung", "HIIIiN", "Hein Thanth", "heinthanth",
   "ဟိန်းသန့် မောင်မောင်", "ဟိန်းဟိန်း", "ဟိန်းသန့်"];
 
+export const contactEmail = `hello@${new URL(siteURL).hostname}`;
 export const coverLocation = { url: absURL(cover.toString()) };
-export const creatorName = "Hein Thant Maung Maung";
+export const creatorFirstName = "Hein Thant";
+export const creatorLastName = "Maung Maung";
+export const creatorName = `${creatorFirstName} ${creatorLastName}`
 export const creatorUsername = "heinthanth";
 
 // prettier-ignore

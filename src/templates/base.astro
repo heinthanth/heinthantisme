@@ -40,7 +40,7 @@ const title = `${t ? `${t} | ` : ""}${k.siteName}`;
         <meta name="og:title" content={title} />
         <meta name="og:description" content={description} />
         <meta name="og:site_name" content={k.siteName} />
-        <meta name="og:email" content={`hello@${new URL(siteURL).hostname}`} />
+        <meta name="og:email" content={k.contactEmail} />
         <meta name="og:image" content={k.coverLocation.url} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={`@${k.creatorUsername}`} />
